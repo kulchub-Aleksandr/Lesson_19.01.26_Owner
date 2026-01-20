@@ -60,6 +60,11 @@ dependencies {
     testImplementation 'com.codeborne:selenide:7.13.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.34.0'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:6.3.3'
+    testImplementation 'org.aeonbits.owner:owner:1.0.4'
+    testImplementation 'org.assertj:assertj-core:3.27.6'
+
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
@@ -72,6 +77,7 @@ tasks.withType(Test) {
             exceptionFormat "short"
         }
     }
+    systemProperties(System.getProperties())
 }
 
 task simple_test(type: Test) {

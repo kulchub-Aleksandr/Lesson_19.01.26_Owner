@@ -2,11 +2,13 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.WebDriverProvider;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
 import pages.components.CalendarComponent;
@@ -19,10 +21,12 @@ public class TestBase {
     TestData testData = new TestData();
     CalendarComponent calendarComponent = new CalendarComponent();
 
+    private WebDriver driver;
+
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
+        //Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         //Configuration.holdBrowserOpen = true;
         //Configuration.timeout = 10000; // default 4000
@@ -33,12 +37,17 @@ public class TestBase {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @BeforeEach
+    public void startDriver() {
+        driver = new WebDriverProvider().get();
     }
 
     @AfterEach
@@ -48,5 +57,9 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
 
+    }
+    @AfterEach
+    public void stopDriver() {
+        driver.quit();
     }
 }
