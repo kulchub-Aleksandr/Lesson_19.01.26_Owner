@@ -1,5 +1,6 @@
 package config;
 
+import config.web.Browser;
 import org.aeonbits.owner.Config;
 
 import java.net.URL;

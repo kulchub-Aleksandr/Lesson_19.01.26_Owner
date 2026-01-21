@@ -1,5 +1,6 @@
 package config;
 
+import config.web.WebConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
@@ -8,25 +9,28 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.function.Supplier;
 
-public class WebDriverProvider implements Supplier<WebDriver> {
+import static config.web.Browser.CHROME;
+import static config.web.Browser.FIREFOX;
 
-    private final WebDriverConfig config;
+public class WebDriverProviderNew implements Supplier<WebDriver> {
 
-    public WebDriverProvider() {
+    private final WebConfig config;
+
+    public WebDriverProviderNew() {
         this.config = ConfigFactory.create
-                (WebDriverConfig.class,
+                (WebConfig.class,
                         System.getProperties());
     }
 
     @Override
     public WebDriver get() {
         WebDriver driver = createDriver();
-        driver.get(config.getBaseUrl());
+        driver.get(config.baseUrl());
         return driver;
     }
 
     public WebDriver createDriver() {
-        switch (config.getBrowser()) {
+        switch (config.browser()) {
             case CHROME: {
                 WebDriverManager.chromedriver().setup();
                 return new ChromeDriver();

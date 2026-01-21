@@ -1,5 +1,6 @@
 package config;
 
+import config.web.Browser;
 import org.aeonbits.owner.Config;
 
 public interface TypeConfig extends Config {
@@ -15,5 +16,8 @@ public interface TypeConfig extends Config {
 
     @Key("enum")
     Browser getEnum();
+
+    @Key("")
+    String getString();
 
 }

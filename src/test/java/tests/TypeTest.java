@@ -1,6 +1,6 @@
 package tests;
 
-import config.Browser;
+import config.web.Browser;
 import config.TypeConfig;
 
 
