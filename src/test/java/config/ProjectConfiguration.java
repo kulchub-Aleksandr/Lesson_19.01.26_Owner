@@ -7,6 +7,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 public class ProjectConfiguration {
+
     private final WebConfig webConfig3;
 
     public ProjectConfiguration(WebConfig webConfig) {
@@ -14,6 +15,9 @@ public class ProjectConfiguration {
     }
 
     public void webConfig6() {
+//        WebDriver driver = new FirefoxDriver();
+//        driver.get(webConfig3.baseUrl());
+
 
 
         Configuration.baseUrl = webConfig3.baseUrl();
@@ -30,7 +34,6 @@ public class ProjectConfiguration {
         if (webConfig3.isRemote()) {
             Configuration.remote = webConfig3.remoteUrl();
         }
-
 
     }
 }

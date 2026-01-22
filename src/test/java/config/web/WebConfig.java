@@ -30,5 +30,6 @@ public interface WebConfig extends Config {
     boolean isRemote();
 
     @Key("remoteUrl")
+    @DefaultValue("https://demoqa.com")
     String remoteUrl();
 }
