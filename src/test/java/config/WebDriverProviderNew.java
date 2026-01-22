@@ -32,11 +32,11 @@ public class WebDriverProviderNew implements Supplier<WebDriver> {
     public WebDriver createDriver() {
         switch (config.browser()) {
             case CHROME: {
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().browserVersion(config.browserVersion()).setup();
                 return new ChromeDriver();
             }
             case FIREFOX: {
-                WebDriverManager.firefoxdriver().setup();
+                WebDriverManager.firefoxdriver().browserVersion(config.browserVersion()).setup();
                 return new FirefoxDriver();
             }
             default: {

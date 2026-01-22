@@ -16,7 +16,7 @@ public class ProjectConfiguration {
     public void webConfig() {
         Configuration.baseUrl = webConfig.baseUrl();
         Configuration.browser = webConfig.browser().toString();
-        //Configuration.browserVersion = webConfig.browserVersion();
+        Configuration.browserVersion = webConfig.browserVersion();
         Configuration.browserSize = webConfig.browserSize();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

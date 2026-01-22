@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class StepsTest extends TestBase {
 
     @Test
-    @DisplayName("Тестирование регистрации на сайте_Lambda")
+    @DisplayName("Testing registration on the website_Lambda")
     @Feature("Регистрация__Feature")
     @Story("Пользователь регистрируется на сайте__Story")
     @Owner("AleksKulch")
