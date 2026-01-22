@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ConfigReader;
 import config.ProjectConfiguration;
+import config.ProjectConfigurationNew;
 import config.WebDriverProviderNew;
 import config.web.WebConfig;
 import helpers.Attach;
@@ -21,22 +22,28 @@ public class TestBase {
     TestData testData = new TestData();
     CalendarComponent calendarComponent = new CalendarComponent();
 
-    private static final WebConfig
-            webConfig = ConfigReader.Instance.read();
+   // private static final WebConfig webConfig4 = ConfigReader.Instance.read();
     private WebDriver driver;
+    ProjectConfigurationNew projectConfigurationNew = new ProjectConfigurationNew();
 
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        driver = new WebDriverProviderNew().get();
+
+//        ProjectConfiguration projectConfiguration = new ProjectConfiguration(webConfig4);
+//        projectConfiguration.webConfig6();
+
+        projectConfigurationNew.setWebConfig();
+
+        driver = new ProjectConfigurationNew().get();
 
     }
 
     @BeforeAll
     static void beforeAll() {
 
-        ProjectConfiguration projectConfiguration = new ProjectConfiguration(webConfig);
-        projectConfiguration.webConfig();
+//        ProjectConfiguration projectConfiguration = new ProjectConfiguration(webConfig4);
+//        projectConfiguration.webConfig();
         //Configuration.browserSize = "1920x1080";
         //Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";

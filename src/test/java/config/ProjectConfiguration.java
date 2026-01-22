@@ -7,25 +7,30 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 public class ProjectConfiguration {
-    private final WebConfig webConfig;
+    private final WebConfig webConfig3;
 
     public ProjectConfiguration(WebConfig webConfig) {
-        this.webConfig = webConfig;
+        this.webConfig3 = webConfig;
     }
 
-    public void webConfig() {
-        Configuration.baseUrl = webConfig.baseUrl();
-        Configuration.browser = webConfig.browser().toString();
-        Configuration.browserVersion = webConfig.browserVersion();
-        Configuration.browserSize = webConfig.browserSize();
+    public void webConfig6() {
+
+
+        Configuration.baseUrl = webConfig3.baseUrl();
+        Configuration.browser = webConfig3.browser().toString();
+        Configuration.browserVersion = webConfig3.browserVersion();
+        Configuration.browserSize = webConfig3.browserSize();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        if (webConfig.isRemote()) {
-            Configuration.remote = webConfig.remoteUrl();
+
+        if (webConfig3.isRemote()) {
+            Configuration.remote = webConfig3.remoteUrl();
         }
+
+
     }
 }

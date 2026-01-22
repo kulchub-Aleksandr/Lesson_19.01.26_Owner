@@ -9,17 +9,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.function.Supplier;
 
-import static config.web.Browser.CHROME;
-import static config.web.Browser.FIREFOX;
-
 public class WebDriverProviderNew implements Supplier<WebDriver> {
 
     private final WebConfig config;
 
     public WebDriverProviderNew() {
-        this.config = ConfigFactory.create
-                (WebConfig.class,
-                        System.getProperties());
+        this.config = ConfigFactory.create(WebConfig.class,System.getProperties());
     }
 
     @Override
@@ -44,5 +39,10 @@ public class WebDriverProviderNew implements Supplier<WebDriver> {
             }
         }
     }
+
+
+
+
+
 
 }
