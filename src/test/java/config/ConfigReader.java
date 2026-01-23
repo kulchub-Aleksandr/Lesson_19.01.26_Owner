@@ -6,7 +6,7 @@ import org.aeonbits.owner.ConfigFactory;
 public enum ConfigReader {
     Instance;
 
-    private static final WebConfig webConfig2 =
+    private static final WebConfig webConfig =
             ConfigFactory.create(
                     WebConfig.class,
                     System.getProperties()
@@ -15,7 +15,7 @@ public enum ConfigReader {
 
 
     public WebConfig read() {
-        return webConfig2;
+        return webConfig;
     }
 }
 

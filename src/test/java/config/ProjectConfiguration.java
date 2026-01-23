@@ -8,22 +8,19 @@ import java.util.Map;
 
 public class ProjectConfiguration {
 
-    private final WebConfig webConfig3;
+    private final WebConfig webConfig;
 
     public ProjectConfiguration(WebConfig webConfig) {
-        this.webConfig3 = webConfig;
+        this.webConfig = webConfig;
     }
 
-    public void webConfig6() {
-//        WebDriver driver = new FirefoxDriver();
-//        driver.get(webConfig3.baseUrl());
+    public void webConfig() {
 
-
-
-        Configuration.baseUrl = webConfig3.baseUrl();
-        Configuration.browser = webConfig3.browser().toString();
-        Configuration.browserVersion = webConfig3.browserVersion();
-        Configuration.browserSize = webConfig3.browserSize();
+        Configuration.baseUrl = webConfig.baseUrl();
+        Configuration.browser = webConfig.browser().toString();
+        Configuration.browserVersion = webConfig.browserVersion();
+        Configuration.browserSize = webConfig.browserSize();
+        Configuration.pageLoadStrategy = "eager";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
@@ -31,8 +28,8 @@ public class ProjectConfiguration {
         ));
         Configuration.browserCapabilities = capabilities;
 
-        if (webConfig3.isRemote()) {
-            Configuration.remote = webConfig3.remoteUrl();
+        if (webConfig.isRemote()) {
+            Configuration.remote = webConfig.remoteUrl();
         }
 
     }

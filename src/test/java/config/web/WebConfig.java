@@ -4,14 +4,13 @@ import org.aeonbits.owner.Config;
 
 @Config.Sources({
         "classpath:${env}.properties",
-        "system:properties",
 
 })
 public interface WebConfig extends Config {
 
     @Key("browser")
     @DefaultValue("CHROME")
-    Browser browser();
+    String browser();
 
     @Key("browserVersion")
     @DefaultValue("143")
