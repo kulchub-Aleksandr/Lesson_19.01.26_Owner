@@ -27,7 +27,7 @@ public class StepsTest extends TestBase {
             @Tag("SMOKE"),
             @Tag("demoqa")
     })
-    public void RegistrationPageLambdaTest() {
+    public void registrationPageLambdaTest() {
         String city = testData.city(testData.state);
 
         step("Open registration page", () -> {
@@ -67,7 +67,7 @@ public class StepsTest extends TestBase {
                 $("#hobbiesWrapper").$(byText(testData.hobbies)).click();
             });
             step("Загружаем картинку", () -> {
-                $("#uploadPicture").uploadFromClasspath(testData.Picture);
+                $("#uploadPicture").uploadFromClasspath(testData.picture);
             });
             step("Вводим Адрес проживания", () -> {
                 $("#currentAddress").setValue(testData.currentAddress);
@@ -115,12 +115,13 @@ public class StepsTest extends TestBase {
     @Owner("AleksKulch")
     @Tag("demoqa")
     @Link(value = "The page for filling in the data", url = "https://demoqa.com/automation-practice-form")
-    public void RegistrationPageTestWithWebSteps() {
+    public void registrationPageTestWithWebSteps() {
 
         String city = testData.city(testData.state);
         step("Open registration page", () -> {
             steps.openPage()
                     .removeBanner();
+
         });
         step("Fill registration form", () -> {
             steps.setFirstName(testData.firstName)
@@ -131,7 +132,7 @@ public class StepsTest extends TestBase {
                     .setDateOfBirth(testData.day, testData.month, testData.year)
                     .setSabjects(testData.subjects)
                     .setHobbies(testData.hobbies)
-                    .setUploadPicture(testData.Picture)
+                    .setUploadPicture(testData.picture)
                     .setCurrentAddress(testData.currentAddress)
                     .setScroll()
                     .setStateDropdown(testData.state)
@@ -148,7 +149,7 @@ public class StepsTest extends TestBase {
                     .checkResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
                     .checkResult("Subjects", testData.subjects)
                     .checkResult("Hobbies", testData.hobbies)
-                    .checkResult("Picture", testData.Picture)
+                    .checkResult("Picture", testData.picture)
                     .checkResult("Address", testData.currentAddress)
                     .checkResult("State and City", testData.state + " " + city)
                     .closeModal();
